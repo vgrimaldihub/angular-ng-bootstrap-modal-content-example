@@ -1,0 +1,37 @@
+<div class="modal-header">
+</div>
+<div class="modal-body">
+	<form [formGroup]="addPaymentForm" (ngSubmit)="submit()">
+		<div class="row">
+			<div class="form-group col-6">
+				<label for="jobId">Job Id</label>
+				<input type="number" id="jobId" class="form-control" formControlName="jobId" required>
+				<div *ngIf="f.jobId.invalid && (f.jobId.dirty || f.jobId.touched)" class="alert alert-danger mt-2">
+					<div *ngIf="f.jobId.errors.required">
+						Job Id is required
+					</div>
+					<div *ngIf="f.jobId.errors.maxlength">
+						Invalid Job Id
+					</div>
+				</div>
+			</div>
+			<div class="form-group col-6">
+				<label for="grossAmount">Gross Amount</label>
+				<input id="grossAmount" type="number" class="form-control" formControlName="grossAmount" required>
+				<div *ngIf="f.grossAmount.invalid && (f.grossAmount.dirty || f.grossAmount.touched)"
+					class="alert alert-danger mt-2">
+					<div *ngIf="f.grossAmount.errors.required">
+						Gross Amount is required
+					</div>
+					<div *ngIf="f.grossAmount.errors.max || f.grossAmount.errors.min">
+						Invalid Gross Amount
+					</div>
+				</div>
+			</div>
+		</div>
+		<button type="button" class="btn btn-outline-dark" [disabled]="submitting" (mousedown)="close()">Close</button>
+
+	</form>
+</div>
+<div class="modal-footer">
+</div>
